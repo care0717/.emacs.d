@@ -1,3 +1,7 @@
+;; set up
+;; M-x package-refresh-contents
+;; M-x package-install git-gutter
+
 ;; package管理
 (package-initialize)
 (setq package-archives
