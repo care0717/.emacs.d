@@ -5,35 +5,29 @@
         ("melpa" . "http://melpa.org/packages/")
         ("org" . "http://orgmode.org/elpa/")))
 
+;; use molokai
+(load-theme 'misterioso t)
+(enable-theme 'misterioso)
+
+
 ;; cmdキーを superとして割り当てる
 (setq mac-command-modifier 'super)
 
 ;; バックスペースの設定
 (global-set-key (kbd "C-h") 'delete-backward-char)
 
-;; auto-complete（自動補完）
-(require 'auto-complete-config)
-(global-auto-complete-mode 0.5)
-
 ;; font
 (add-to-list 'default-frame-alist '(font . "ricty-12"))
 
-;; color theme
-;(load-theme 'monokai t)
+
+(column-number-mode t)
+(line-number-mode t)
+
 
 ;; alpha
 (if window-system 
     (progn
       (set-frame-parameter nil 'alpha 95)))
-
-;; 非アクティブウィンドウの背景色を設定
-(require 'hiwin)
-(hiwin-activate)
-(set-face-background 'hiwin-face "gray30")
-
-;; line numberの表示
-(require 'linum)
-(global-linum-mode 1)
 
 ;; tabサイズ
 (setq default-tab-width 4)
@@ -95,7 +89,7 @@
 ;; エラー音をならなくする
 (setq ring-bell-function 'ignore)
 
-;; git-gutter-fringe
+;; git-gutte
 (global-git-gutter-mode 1)
 
 ;; magit
@@ -107,4 +101,12 @@
 ;; 大文字小文字を区別しない
 (setq case-fold-search t)
 
+;; バックアップファイルを.ehistに保存
+ (setq backup-directory-alist '((".*" . "~/.ehist")))
+
+;; 自動保存ファイルを.ehist/autosaveに保存
+ (setq auto-save-file-name-transforms   '((".*" "~/.ehist/autosave" t)))
+
+ ;; "yes or no" の選択を "y or n" にする
+(fset 'yes-or-no-p 'y-or-n-p)
 

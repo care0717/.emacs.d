@@ -2,10 +2,11 @@
 ;;
 ;;; Code:
 
+(add-to-list 'load-path (directory-file-name
+                         (or (file-name-directory #$) (car load-path))))
+
 
-;;;### (autoloads (git-gutter:toggle git-gutter global-git-gutter-mode
-;;;;;;  git-gutter-mode git-gutter:linum-setup) "git-gutter" "git-gutter.el"
-;;;;;;  (22951 20347 95990 100000))
+;;;### (autoloads nil "git-gutter" "git-gutter.el" (0 0 0 0))
 ;;; Generated autoloads from git-gutter.el
 
 (autoload 'git-gutter:linum-setup "git-gutter" "\
@@ -19,8 +20,9 @@ Git-Gutter mode
 \(fn &optional ARG)" t nil)
 
 (defvar global-git-gutter-mode nil "\
-Non-nil if Global-Git-Gutter mode is enabled.
-See the command `global-git-gutter-mode' for a description of this minor mode.
+Non-nil if Global Git-Gutter mode is enabled.
+See the `global-git-gutter-mode' command
+for a description of this minor mode.
 Setting this variable directly does not take effect;
 either customize it (see the info node `Easy Customization')
 or call the function `global-git-gutter-mode'.")
@@ -29,7 +31,7 @@ or call the function `global-git-gutter-mode'.")
 
 (autoload 'global-git-gutter-mode "git-gutter" "\
 Toggle Git-Gutter mode in all buffers.
-With prefix ARG, enable Global-Git-Gutter mode if ARG is positive;
+With prefix ARG, enable Global Git-Gutter mode if ARG is positive;
 otherwise, disable it.  If called from Lisp, enable the mode if
 ARG is omitted or nil.
 
@@ -49,14 +51,10 @@ Toggle to show diff information.
 
 \(fn)" t nil)
 
-;;;***
-
-;;;### (autoloads nil nil ("git-gutter-pkg.el") (22951 20347 158743
-;;;;;;  700000))
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "git-gutter" '("git-gutter")))
 
 ;;;***
 
-(provide 'git-gutter-autoloads)
 ;; Local Variables:
 ;; version-control: never
 ;; no-byte-compile: t
